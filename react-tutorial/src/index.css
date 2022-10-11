@@ -20,6 +20,16 @@
   --element-spacing: 30px;
   --inner-element-spacing: 10px;
 }
+.no-scroll-bars {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+.no-scroll-bars::-webkit-scrollbar {
+  display: none;
+  /* chrome */
+}
 h1,
 h2,
 h3,
@@ -86,8 +96,28 @@ body {
   padding-bottom: var(--inner-element-spacing);
 }
 .game .game-info .event-list-wrapper {
+  position: relative;
   height: 100%;
+  min-width: 180px;
   overflow-y: auto;
+  padding-right: var(--inner-element-spacing);
+}
+.game .game-info .event-list-wrapper::before,
+.game .game-info .event-list-wrapper::after {
+  display: block;
+  position: sticky;
+  content: '';
+  left: 0;
+  right: 0;
+  height: var(--inner-element-spacing);
+}
+.game .game-info .event-list-wrapper::before {
+  top: 0;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0), #ffffff);
+}
+.game .game-info .event-list-wrapper::after {
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff);
 }
 .game .game-info button {
   height: var(--button-height);
@@ -107,10 +137,4 @@ body {
 }
 .game .game-info li {
   padding-bottom: var(--inner-element-spacing);
-}
-.status {
-  margin-bottom: 10px;
-}
-.kbd-navigation .square:focus {
-  background: #ddd;
 }
