@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Board } from './board';
+import "./game.css";
 
 export const Game = () => {
     const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
@@ -29,7 +30,7 @@ export const Game = () => {
     const handleClick = (i: number) => {
         const newHistory = history.slice(0, stepNumber + 1);
         const current = history[newHistory.length - 1];
-        const squares: Array<string> = current.squares.slice();
+        const squares: string[] = current.squares.slice();
 
         if (calculateWinner(squares) || squares[i]) {
             return;
@@ -50,7 +51,7 @@ export const Game = () => {
     return (
         <div className="game">
             <div className="game-board">
-                <Board squares={current.squares} onClick={(i) => handleClick(i)} />
+                <Board squares={current.squares} onClick={handleClick} />
             </div>
             <div className="game-info">
                 <p>{status}</p>

@@ -1,0 +1,88 @@
+.game {
+  display: flex;
+  flex-direction: row;
+}
+.game .game-board .board-row {
+  display: grid;
+  grid-auto-flow: column;
+}
+.game .game-board .board-row .square {
+  height: 50px;
+  width: 50px;
+  background-color: var(--grey-background);
+  border: 1px solid var(--borders);
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: -1px;
+  margin-top: -1px;
+}
+.game .game-board .board-row .square:focus {
+  outline: none;
+}
+.game .game-board .board-row .square:hover {
+  background-color: var(--grey-background-hover);
+}
+.game .game-board .board-row:first-child .square:first-child {
+  border-top-left-radius: var(--default-border-radius);
+}
+.game .game-board .board-row:first-child .square:last-child {
+  border-top-right-radius: var(--default-border-radius);
+}
+.game .game-board .board-row:last-child .square:first-child {
+  border-bottom-left-radius: var(--default-border-radius);
+}
+.game .game-board .board-row:last-child .square:last-child {
+  border-bottom-right-radius: var(--default-border-radius);
+}
+.game .game-info {
+  height: 300px;
+  max-height: calc(100vh - (2 * var(--element-spacing)));
+  margin-left: var(--element-spacing);
+  padding-bottom: var(--element-spacing);
+}
+.game .game-info p {
+  padding-bottom: var(--inner-element-spacing);
+}
+.game .game-info .event-list-wrapper {
+  position: relative;
+  height: 100%;
+  min-width: 180px;
+  overflow-y: auto;
+  padding-right: var(--inner-element-spacing);
+}
+.game .game-info .event-list-wrapper::before,
+.game .game-info .event-list-wrapper::after {
+  display: block;
+  position: sticky;
+  content: '';
+  left: 0;
+  right: 0;
+  height: var(--inner-element-spacing);
+}
+.game .game-info .event-list-wrapper::before {
+  top: 0;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0), #ffffff);
+}
+.game .game-info .event-list-wrapper::after {
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff);
+}
+.game .game-info button {
+  height: var(--button-height);
+  line-height: var(--button-height);
+  padding: 0 var(--inner-element-spacing);
+  background-color: var(--grey-background);
+  border: 1px solid var(--borders);
+  border-radius: var(--default-border-radius);
+}
+.game .game-info button:hover {
+  border-color: var(--border-hover);
+  background-color: var(--grey-background-hover);
+}
+.game .game-info ol,
+.game .game-info ul {
+  padding-left: 30px;
+}
+.game .game-info li {
+  padding-bottom: var(--inner-element-spacing);
+}
